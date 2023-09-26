@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#weatherApp {
+    width: 80%;
+    margin: auto;
+}
+
+#cityInput {
+    width: 70%;
+    padding: 10px;
+}
+
+#searchBtn {
+    padding: 10px;
+}
+
+#currentWeather, #forecast {
+    margin-top: 20px;
+}
+
+#searchHistory {
+    list-style: none;
+}
