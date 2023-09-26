@@ -1,5 +1,6 @@
 body {
     font-family: Arial, sans-serif;
+    margin: top 60px;
 }
 
 #weatherApp {
@@ -7,13 +8,24 @@ body {
     margin: auto;
 }
 
-#cityInput {
-    width: 70%;
-    padding: 10px;
+
+.navbar {
+    margin-bottom: 20px;
+
+}
+.navbar-item {
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder ;
 }
 
-#searchBtn {
-    padding: 10px;
+.is-black {
+    margin-top: 10px;
+    height: 10%;
+    position: relative;
+    left: 14px;
+    
+
 }
 
 #currentWeather, #forecast {
@@ -28,6 +40,19 @@ div {
     display: block;
 }
 
+.card {
+    width: 50%;
+    padding: 20px;
+    margin: 20px;
+}
+
 #currentWeather {
-    max-width: 25%;
+    max-width: 50%;
+}
+.card-header{
+    font-weight: bolder;
+}
+
+#weatherApp {
+    align-self: center;
 }

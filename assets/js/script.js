@@ -36,86 +36,108 @@ document.getElementById('searchBtn').addEventListener('click', function() {
         const currentHumidity = data.list[0].main.humidity;
         const currentWind = data.list[0].wind.speed;
         const currentDate = data.list[0].dt_txt;
+        function formatDate(inputDate) {
+            // Strip out the time portion and create a new Date object from the input date
+            const dateOnly = inputDate.split(" ")[0];
+            const dateObj = new Date(dateOnly);
+        
+            // Extract the day, month, and year from the Date object
+            const day = String(dateObj.getDate()).padStart(2, '0');
+            const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Months are 0-based in JS
+            const year = dateObj.getFullYear();
+        
+            // Return the formatted date
+            return `${month}-${day}-${year}`;
+        }
+        const currentDateFormated = (formatDate(currentDate))
+        console.log(currentDateFormated)
+        
+        
         const currentTempItem = document.createElement("p")
         const currentDateItem = document.createElement("p")
         const currentHumidityItem = document.createElement("p")
         const currentWindItem = document.createElement("p")
-        currentDateItem.textContent = currentDate
-        currentTempItem.textContent = currentTemp + " F°";
-        currentHumidityItem.textContent = currentHumidity + " %";
-        currentWindItem.textContent = currentWind + " MPH"
-        currentForecast.append(currentDate, currentTempItem, currentHumidityItem, currentWindItem)
+        currentDateItem.textContent = "Date: " + currentDateFormated;
+        currentTempItem.textContent = "Temp: " + currentTemp + " F°";
+        currentHumidityItem.textContent = "Humidity: " + currentHumidity + " %";
+        currentWindItem.textContent = "Wind: " + currentWind + " MPH"
+        currentForecast.append(currentDateItem, currentTempItem, currentHumidityItem, currentWindItem)
 
         
-        const dayOneTemp = data.list[8].main.temp;
-        const dayOneHumidity = data.list[8].main.humidity;
-        const dayOneWind = data.list[8].wind.speed;
-        const dayOneDate = data.list[8].dt_txt;
+        const dayOneTemp = data.list[7].main.temp;
+        const dayOneHumidity = data.list[7].main.humidity;
+        const dayOneWind = data.list[7].wind.speed;
+        const dayOneDate = data.list[7].dt_txt;
+        const dayOneDateFormated = (formatDate(dayOneDate))
         const dayOneTempItem = document.createElement("p");
         const dayOneDateItem = document.createElement("p");
         const dayOneHumidityItem = document.createElement("p");
         const dayOneWindItem = document.createElement("p");
-        dayOneDateItem.textContent = dayOneDate;
-        dayOneTempItem.textContent = dayOneTemp + " F°";
-        dayOneHumidityItem.textContent = dayOneHumidity + " %";
+        dayOneDateItem.textContent = "Date: " + dayOneDateFormated;
+        dayOneTempItem.textContent = "Temp: " + dayOneTemp + " F°";
+        dayOneHumidityItem.textContent = "Humidity: " + dayOneHumidity + " %";
         dayOneWindItem.textContent = dayOneWind + " MPH";
         dayOneForecast.append(dayOneDateItem, dayOneTempItem, dayOneHumidityItem, dayOneWindItem);
 
         
-        const dayTwoTemp = data.list[16].main.temp;
-        const dayTwoHumidity = data.list[16].main.humidity;
-        const dayTwoWind = data.list[16].wind.speed;
-        const dayTwoDate = data.list[16].dt_txt;
+        const dayTwoTemp = data.list[15].main.temp;
+        const dayTwoHumidity = data.list[15].main.humidity;
+        const dayTwoWind = data.list[15].wind.speed;
+        const dayTwoDate = data.list[15].dt_txt;
+        const dayTwoDateFormated = (formatDate(dayTwoDate))
         const dayTwoTempItem = document.createElement("p");
         const dayTwoDateItem = document.createElement("p");
         const dayTwoHumidityItem = document.createElement("p");
         const dayTwoWindItem = document.createElement("p");
-        dayTwoDateItem.textContent = dayTwoDate;
-        dayTwoTempItem.textContent = dayTwoTemp + " F°";
-        dayTwoHumidityItem.textContent = dayTwoHumidity + " %";
+        dayTwoDateItem.textContent = "Date: " + dayTwoDateFormated;
+        dayTwoTempItem.textContent = "Temp: " + dayTwoTemp + " F°";
+        dayTwoHumidityItem.textContent = "Humidity: " + dayTwoHumidity + " %";
         dayTwoWindItem.textContent = dayTwoWind + " MPH";
         dayTwoForecast.append(dayTwoDateItem, dayTwoTempItem, dayTwoHumidityItem, dayTwoWindItem);
 
 
-        const dayThreeTemp = data.list[24].main.temp;
-        const dayThreeHumidity = data.list[24].main.humidity;
-        const dayThreeWind = data.list[24].wind.speed;
-        const dayThreeDate = data.list[24].dt_txt;
+        const dayThreeTemp = data.list[23].main.temp;
+        const dayThreeHumidity = data.list[23].main.humidity;
+        const dayThreeWind = data.list[23].wind.speed;
+        const dayThreeDate = data.list[23].dt_txt;
+        const dayThreeDateFormated = (formatDate(dayThreeDate))
         const dayThreeTempItem = document.createElement("p");
         const dayThreeDateItem = document.createElement("p");
         const dayThreeHumidityItem = document.createElement("p");
         const dayThreeWindItem = document.createElement("p");
-        dayThreeDateItem.textContent = dayThreeDate;
-        dayThreeTempItem.textContent = dayThreeTemp + " F°";
-        dayThreeHumidityItem.textContent = dayThreeHumidity + " %";
+        dayThreeDateItem.textContent = "Date: " + dayThreeDateFormated;
+        dayThreeTempItem.textContent = "Temp: " + dayThreeTemp + " F°";
+        dayThreeHumidityItem.textContent = "Humidity: " + dayThreeHumidity + " %";
         dayThreeWindItem.textContent = dayThreeWind + " MPH";
         dayThreeForecast.append(dayThreeDateItem, dayThreeTempItem, dayThreeHumidityItem, dayThreeWindItem);
         
-        const dayFourTemp = data.list[32].main.temp;
-        const dayFourHumidity = data.list[32].main.humidity;
-        const dayFourWind = data.list[32].wind.speed;
-        const dayFourDate = data.list[32].dt_txt;
+        const dayFourTemp = data.list[31].main.temp;
+        const dayFourHumidity = data.list[31].main.humidity;
+        const dayFourWind = data.list[31].wind.speed;
+        const dayFourDate = data.list[31].dt_txt;
+        const dayFourDateFormated = (formatDate(dayFourDate))
         const dayFourTempItem = document.createElement("p");
         const dayFourDateItem = document.createElement("p");
         const dayFourHumidityItem = document.createElement("p");
         const dayFourWindItem = document.createElement("p");
-        dayFourDateItem.textContent = dayFourDate;
-        dayFourTempItem.textContent = dayFourTemp + " F°";
-        dayFourHumidityItem.textContent = dayFourHumidity + " %";
+        dayFourDateItem.textContent = "Date: " + dayFourDateFormated;
+        dayFourTempItem.textContent = "Temp: " + dayFourTemp + " F°";
+        dayFourHumidityItem.textContent = "Humidity: " + dayFourHumidity + " %";
         dayFourWindItem.textContent = dayFourWind + " MPH";
         dayFourForecast.append(dayFourDateItem, dayFourTempItem, dayFourHumidityItem, dayFourWindItem);
         
-        const dayFiveTemp = data.list[40].main.temp;
-        const dayFiveHumidity = data.list[40].main.humidity;
-        const dayFiveWind = data.list[40].wind.speed;
-        const dayFiveDate = data.list[40].dt_txt;
+        const dayFiveTemp = data.list[39].main.temp;
+        const dayFiveHumidity = data.list[39].main.humidity;
+        const dayFiveWind = data.list[39].wind.speed;
+        const dayFiveDate = data.list[39].dt_txt;
+        const dayFiveDateFormated = (formatDate(dayFiveDate))
         const dayFiveTempItem = document.createElement("p");
         const dayFiveDateItem = document.createElement("p");
         const dayFiveHumidityItem = document.createElement("p");
         const dayFiveWindItem = document.createElement("p");
-        dayFiveDateItem.textContent = dayFiveDate;
-        dayFiveTempItem.textContent = dayFiveTemp + " F°";
-        dayFiveHumidityItem.textContent = dayFiveHumidity + " %";
+        dayFiveDateItem.textContent = "Date: " + dayFiveDateFormated;
+        dayFiveTempItem.textContent = "Temp: " + dayFiveTemp + " F°";
+        dayFiveHumidityItem.textContent = "Humidity: " + dayFiveHumidity + " %";
         dayFiveWindItem.textContent = dayFiveWind + " MPH";
         dayFiveForecast.append(dayFiveDateItem, dayFiveTempItem, dayFiveHumidityItem, dayFiveWindItem);
 
