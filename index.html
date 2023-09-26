@@ -4,24 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
     <div id="weatherApp">
         <input type="text" id="cityInput" placeholder="Search for a city">
         <button id="searchBtn">Search</button>
-        <div id="currentWeather">
-            <div id="currentTemp">  </div>
-            <div id="currentHumidity">  </div>
-            <div id="currentWind">  </div>
+    
+        <div class="card" id="currentWeather">
+            <header class="card-header">Current Forecast</header>
+            <div class="card-content">
+                <div class="content" id="currentTemp"></div>
+                <div class="content" id="currentHumidity"></div>
+                <div class="content" id="currentWind"></div>
+            </div>
         </div>
+    
         <div id="forecast">
-            <div id="dayOneWeather"></div>
-            <div id="dayTwoWeather"></div>
-            <div id="dayThreeWeather"></div>
-            <div id="dayFourWeather"></div>
-            <div id="dayFiveWeather"></div>
+    
+            <div class="card" id="dayOneWeather">
+                <header class="card-header">Day 1 Forecast</header>
+                <div class="card-content">
+                    <div class="content" id="dayOneTemp"></div>
+                    <div class="content" id="dayOneHumidity"></div>
+                    <div class="content" id="dayOneWind"></div>
+                </div>
+            </div>
+    
+            <div class="card" id="dayTwoWeather">
+                <header class="card-header">Day 2 Forecast</header>
+                <div class="card-content">
+                    <div class="content" id="dayTwoTemp"></div>
+                    <div class="content" id="dayTwoHumidity"></div>
+                    <div class="content" id="dayTwoWind"></div>
+                </div>
+            </div>
+    
+            <div class="card" id="dayThreeWeather">
+                <header class="card-header">Day 3 Forecast</header>
+                <div class="card-content">
+                    <div class="content" id="dayThreeTemp"></div>
+                    <div class="content" id="dayThreeHumidity"></div>
+                    <div class="content" id="dayThreeWind"></div>
+                </div>
+            </div>
+    
+            <div class="card" id="dayFourWeather">
+                <header class="card-header">Day 4 Forecast</header>
+                <div class="card-content">
+                    <div class="content" id="dayFourTemp"></div>
+                    <div class="content" id="dayFourHumidity"></div>
+                    <div class="content" id="dayFourWind"></div>
+                </div>
+            </div>
+    
+            <div class="card" id="dayFiveWeather">
+                <header class="card-header">Day 5 Forecast</header>
+                <div class="card-content">
+                    <div class="content" id="dayFiveTemp"></div>
+                    <div class="content" id="dayFiveHumidity"></div>
+                    <div class="content" id="dayFiveWind"></div>
+                </div>
+            </div>
         </div>
+    </div>
+    
         <ul id="searchHistory"></ul>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
