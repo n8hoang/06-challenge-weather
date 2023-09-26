@@ -46,7 +46,7 @@ document.getElementById('searchBtn').addEventListener('click', function() {
         currentWindItem.textContent = currentWind + " MPH"
         currentForecast.append(currentDate, currentTempItem, currentHumidityItem, currentWindItem)
 
-        // Day One Forecast
+        
         const dayOneTemp = data.list[8].main.temp;
         const dayOneHumidity = data.list[8].main.humidity;
         const dayOneWind = data.list[8].wind.speed;
@@ -62,7 +62,10 @@ document.getElementById('searchBtn').addEventListener('click', function() {
         dayOneForecast.append(dayOneDateItem, dayOneTempItem, dayOneHumidityItem, dayOneWindItem);
 
         
-        // Day Two Forecast
+        const dayTwoTemp = data.list[16].main.temp;
+        const dayTwoHumidity = data.list[16].main.humidity;
+        const dayTwoWind = data.list[16].wind.speed;
+        const dayTwoDate = data.list[16].dt_txt;
         const dayTwoTempItem = document.createElement("p");
         const dayTwoDateItem = document.createElement("p");
         const dayTwoHumidityItem = document.createElement("p");
@@ -72,8 +75,12 @@ document.getElementById('searchBtn').addEventListener('click', function() {
         dayTwoHumidityItem.textContent = dayTwoHumidity + " %";
         dayTwoWindItem.textContent = dayTwoWind + " MPH";
         dayTwoForecast.append(dayTwoDateItem, dayTwoTempItem, dayTwoHumidityItem, dayTwoWindItem);
-        
-        // Day Three Forecast
+
+
+        const dayThreeTemp = data.list[24].main.temp;
+        const dayThreeHumidity = data.list[24].main.humidity;
+        const dayThreeWind = data.list[24].wind.speed;
+        const dayThreeDate = data.list[24].dt_txt;
         const dayThreeTempItem = document.createElement("p");
         const dayThreeDateItem = document.createElement("p");
         const dayThreeHumidityItem = document.createElement("p");
@@ -84,7 +91,10 @@ document.getElementById('searchBtn').addEventListener('click', function() {
         dayThreeWindItem.textContent = dayThreeWind + " MPH";
         dayThreeForecast.append(dayThreeDateItem, dayThreeTempItem, dayThreeHumidityItem, dayThreeWindItem);
         
-        // Day Four Forecast
+        const dayFourTemp = data.list[32].main.temp;
+        const dayFourHumidity = data.list[32].main.humidity;
+        const dayFourWind = data.list[32].wind.speed;
+        const dayFourDate = data.list[32].dt_txt;
         const dayFourTempItem = document.createElement("p");
         const dayFourDateItem = document.createElement("p");
         const dayFourHumidityItem = document.createElement("p");
@@ -95,7 +105,10 @@ document.getElementById('searchBtn').addEventListener('click', function() {
         dayFourWindItem.textContent = dayFourWind + " MPH";
         dayFourForecast.append(dayFourDateItem, dayFourTempItem, dayFourHumidityItem, dayFourWindItem);
         
-        // Day Five Forecast
+        const dayFiveTemp = data.list[40].main.temp;
+        const dayFiveHumidity = data.list[40].main.humidity;
+        const dayFiveWind = data.list[40].wind.speed;
+        const dayFiveDate = data.list[40].dt_txt;
         const dayFiveTempItem = document.createElement("p");
         const dayFiveDateItem = document.createElement("p");
         const dayFiveHumidityItem = document.createElement("p");
