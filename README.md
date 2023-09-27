@@ -11,7 +11,7 @@ No need to install just run in browser. Link to deployed APP : https://n8hoang.g
 ## Usage
 
 Search a city and get a 5 day weather forecast. Each searched city will be saved as a button so you can later access that weather data at a later time.
-![demo](Assets/images/weatherapp.png)
+![demo](assets/images/weatherapp.png)
 
 ## Credits
 
