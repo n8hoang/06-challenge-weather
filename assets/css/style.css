@@ -31,6 +31,45 @@ h1 {
     
 
 }
+.currentIcon {
+    position: relative;
+    left: 250px;
+    top: 50px;
+    height: 20%;
+
+}
+.dayOneIcon {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    padding: 10px;
+}
+
+.dayTwoIcon {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    padding: 10px;
+}
+
+.dayThreeIcon {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    padding: 10px;
+}
+.dayFourIcon {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    padding: 10px;
+}
+.dayFiveIcon {
+    position: relative;
+    top: 40px;
+    left: 10px;
+    padding: 10px;
+}
 
 .historyButton {
     padding: 20px;
@@ -64,4 +103,9 @@ div {
 
 #weatherApp {
     align-self: center;
+}
+
+.card-content {
+    position: relative;
+    margin-top: -60px;
 }

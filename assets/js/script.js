@@ -39,6 +39,13 @@ const dayFiveTempText = document.getElementById("dayFiveTemp");
 const dayFiveHumidityText = document.getElementById("dayFiveHumidity");
 const dayFiveWindText = document.getElementById("dayFiveWind");
 
+const currentIconImage = document.querySelector(".currentIcon")
+const dayOneIcon = document.querySelector(".dayOneIcon");
+const dayTwoIcon = document.querySelector(".dayTwoIcon");
+const dayThreeIcon = document.querySelector(".dayThreeIcon");
+const dayFourIcon = document.querySelector(".dayFourIcon");
+const dayFiveIcon = document.querySelector(".dayFiveIcon")
+
 const getWeather = function() {
     let cityName = document.getElementById('cityInput').value.trim();
     cardContent.textContent = ""
@@ -64,6 +71,8 @@ const getWeather = function() {
         const currentHumidity = data.list[0].main.humidity;
         const currentWind = data.list[0].wind.speed;
         const currentDate = data.list[0].dt_txt;
+        const currentIcon = data.list[0].weather[0].icon
+        console.log(currentIcon)
         function formatDate(inputDate) {
             // Strip out the time portion and create a new Date object from the input date
             const dateOnly = inputDate.split(" ")[0];
@@ -79,66 +88,78 @@ const getWeather = function() {
         }
         const currentDateFormated = (formatDate(currentDate))
         console.log(currentDateFormated)
+        let iconUrl = "https://openweathermap.org/img/wn/" + currentIcon + ".png";
+        console.log(iconUrl)
         
+
+        currentIconImage.src = iconUrl
         cityText.textContent = cityName;
         currentDateText.textContent = "Date: " + currentDateFormated;
         currentTempText.textContent = "Temp: " + currentTemp + " F°";
         currentHumidityText.textContent = "Humidity: " + currentHumidity + " %";
         currentWindText.textContent = "Wind: " + currentWind + " MPH"
-        currentForecast.append(cityText, currentDateText, currentTempText, currentHumidityText, currentWindText)
+        currentForecast.append(currentIconImage, cityText, currentDateText, currentTempText, currentHumidityText, currentWindText)
 
         
         const dayOneTemp = data.list[7].main.temp;
         const dayOneHumidity = data.list[7].main.humidity;
         const dayOneWind = data.list[7].wind.speed;
         const dayOneDate = data.list[7].dt_txt;
+        const dayOneIconId = data.list[7].weather[0].icon
         const dayOneDateFormated = (formatDate(dayOneDate))
+        dayOneIcon.src = "https://openweathermap.org/img/wn/" + dayOneIconId + ".png";
         dayOneDateText.textContent = "Date: " + dayOneDateFormated;
         dayOneTempText.textContent = "Temp: " + dayOneTemp + " F°";
         dayOneHumidityText.textContent = "Humidity: " + dayOneHumidity + " %";
         dayOneWindText.textContent = dayOneWind + " MPH";
-        dayOneForecast.append(dayOneDateText, dayOneTempText, dayOneHumidityText, dayOneWindText);
+        dayOneForecast.append(dayOneIcon, dayOneDateText, dayOneTempText, dayOneHumidityText, dayOneWindText);
 
-        
+        const dayTwoIconId = data.list[15].weather[0].icon
         const dayTwoTemp = data.list[15].main.temp;
         const dayTwoHumidity = data.list[15].main.humidity;
         const dayTwoWind = data.list[15].wind.speed;
         const dayTwoDate = data.list[15].dt_txt;
         const dayTwoDateFormated = (formatDate(dayTwoDate))
+        dayTwoIcon.src = "https://openweathermap.org/img/wn/" + dayTwoIconId + ".png";
         dayTwoDateText.textContent = "Date: " + dayTwoDateFormated;
         dayTwoTempText.textContent = "Temp: " + dayTwoTemp + " F°";
         dayTwoHumidityText.textContent = "Humidity: " + dayTwoHumidity + " %";
         dayTwoWindText.textContent = dayTwoWind + " MPH";
-        dayTwoForecast.append(dayTwoDateText, dayTwoTempText, dayTwoHumidityText, dayTwoWindText);
+        dayTwoForecast.append(dayTwoIcon, dayTwoDateText, dayTwoTempText, dayTwoHumidityText, dayTwoWindText);
 
-
+        const dayThreeIconId = data.list[23].weather[0].icon
         const dayThreeTemp = data.list[23].main.temp;
         const dayThreeHumidity = data.list[23].main.humidity;
         const dayThreeWind = data.list[23].wind.speed;
         const dayThreeDate = data.list[23].dt_txt;
         const dayThreeDateFormated = (formatDate(dayThreeDate))
+        dayThreeIcon.src = "https://openweathermap.org/img/wn/" + dayThreeIconId + ".png";
         dayThreeDateText.textContent = "Date: " + dayThreeDateFormated;
         dayThreeTempText.textContent = "Temp: " + dayThreeTemp + " F°";
         dayThreeHumidityText.textContent = "Humidity: " + dayThreeHumidity + " %";
         dayThreeWindText.textContent = dayThreeWind + " MPH";
-        dayThreeForecast.append(dayThreeDateText, dayThreeTempText, dayThreeHumidityText, dayThreeWindText);
+        dayThreeForecast.append(dayThreeIcon, dayThreeDateText, dayThreeTempText, dayThreeHumidityText, dayThreeWindText);
         
+        const dayFourIconId = data.list[31].weather[0].icon
         const dayFourTemp = data.list[31].main.temp;
         const dayFourHumidity = data.list[31].main.humidity;
         const dayFourWind = data.list[31].wind.speed;
         const dayFourDate = data.list[31].dt_txt;
         const dayFourDateFormated = (formatDate(dayFourDate))
+        dayFourIcon.src = "https://openweathermap.org/img/wn/" + dayFourIconId + ".png";
         dayFourDateText.textContent = "Date: " + dayFourDateFormated;
         dayFourTempText.textContent = "Temp: " + dayFourTemp + " F°";
         dayFourHumidityText.textContent = "Humidity: " + dayFourHumidity + " %";
         dayFourWindText.textContent = dayFourWind + " MPH";
-        dayFourForecast.append(dayFourDateText, dayFourTempText, dayFourHumidityText, dayFourWindText);
+        dayFourForecast.append(dayFourIcon, dayFourDateText, dayFourTempText, dayFourHumidityText, dayFourWindText);
         
+        const dayFiveIconId = data.list[39].weather[0].icon
         const dayFiveTemp = data.list[39].main.temp;
         const dayFiveHumidity = data.list[39].main.humidity;
         const dayFiveWind = data.list[39].wind.speed;
         const dayFiveDate = data.list[39].dt_txt;
         const dayFiveDateFormated = (formatDate(dayFiveDate))
+        dayFiveIcon.src = "https://openweathermap.org/img/wn/" + dayFiveIconId + ".png";
         dayFiveDateText.textContent = "Date: " + dayFiveDateFormated;
         dayFiveTempText.textContent = "Temp: " + dayFiveTemp + " F°";
         dayFiveHumidityText.textContent = "Humidity: " + dayFiveHumidity + " %";
@@ -155,12 +176,13 @@ const getWeather = function() {
         historyButton.dataset.wind = currentWind;
         historyButton.dataset.date = currentDateFormated;
         historyButton.dataset.city = cityName
+        historyButton.dataset.icon = currentIconImage.src
         const days = [
-            { temp: dayOneTemp, humidity: dayOneHumidity, wind: dayOneWind, date: dayOneDateFormated },
-            { temp: dayTwoTemp, humidity: dayTwoHumidity, wind: dayTwoWind, date: dayTwoDateFormated },
-            { temp: dayThreeTemp, humidity: dayThreeHumidity, wind: dayThreeWind, date: dayThreeDateFormated },
-            { temp: dayFourTemp, humidity: dayFourHumidity, wind: dayFourWind, date: dayFourDateFormated },
-            { temp: dayFiveTemp, humidity: dayFiveHumidity, wind: dayFiveWind, date: dayFiveDateFormated }
+            { temp: dayOneTemp, humidity: dayOneHumidity, wind: dayOneWind, date: dayOneDateFormated, icon:dayOneIcon.src },
+            { temp: dayTwoTemp, humidity: dayTwoHumidity, wind: dayTwoWind, date: dayTwoDateFormated, icon:dayTwoIcon.src },
+            { temp: dayThreeTemp, humidity: dayThreeHumidity, wind: dayThreeWind, date: dayThreeDateFormated, icon:dayThreeIcon.src },
+            { temp: dayFourTemp, humidity: dayFourHumidity, wind: dayFourWind, date: dayFourDateFormated, icon:dayFourIcon.src },
+            { temp: dayFiveTemp, humidity: dayFiveHumidity, wind: dayFiveWind, date: dayFiveDateFormated, icon:dayFiveIcon.src }
         ];
         
         for (let i = 0; i < days.length; i++) {
@@ -168,6 +190,7 @@ const getWeather = function() {
             historyButton.dataset[`day${i + 1}Humidity`] = days[i].humidity;
             historyButton.dataset[`day${i + 1}Wind`] = days[i].wind;
             historyButton.dataset[`day${i + 1}Date`] = days[i].date;
+            historyButton.dataset[`day${i + 1}Icon`] = days[i].icon;
         }
 
         
@@ -190,32 +213,38 @@ historyContainer.addEventListener('click', function(event) {
         cardContent.textContent = ""
         let button = event.target;
 
+        let currentImage = button.dataset.icon
         let cityName = button.dataset.city;
         let temp = button.dataset.temp;
         let humidity = button.dataset.humidity;
         let wind = button.dataset.wind;
         let date = button.dataset.date;
-
+        
+        let dayOneIconBtn = button.dataset.day1Icon
         let dayOneTemp = button.dataset.day1Temp;
         let dayOneHumidity = button.dataset.day1Humidity;
         let dayOneWind = button.dataset.day1Wind;
         let dayOneDate = button.dataset.day1Date;
         
+        let dayTwoIconBtn = button.dataset.day2Icon
         let dayTwoTemp = button.dataset.day2Temp;
         let dayTwoHumidity = button.dataset.day2Humidity;
         let dayTwoWind = button.dataset.day2Wind;
         let dayTwoDate = button.dataset.day2Date;
         
+        let dayThreeIconBtn = button.dataset.day3Icon
         let dayThreeTemp = button.dataset.day3Temp;
         let dayThreeHumidity = button.dataset.day3Humidity;
         let dayThreeWind = button.dataset.day3Wind;
         let dayThreeDate = button.dataset.day3Date;
         
+        let dayFourIconBtn = button.dataset.day4Icon
         let dayFourTemp = button.dataset.day4Temp;
         let dayFourHumidity = button.dataset.day4Humidity;
         let dayFourWind = button.dataset.day4Wind;
         let dayFourDate = button.dataset.day4Date;
         
+        let dayFiveIconBtn = button.dataset.day5Icon
         let dayFiveTemp = button.dataset.day5Temp;
         let dayFiveHumidity = button.dataset.day5Humidity;
         let dayFiveWind = button.dataset.day5Wind;
@@ -226,6 +255,7 @@ historyContainer.addEventListener('click', function(event) {
 
         // Update the DOM with the saved data from the clicked button
         // Example:
+        currentIconImage.src = currentImage
         currentTempText.textContent = "Temp: " + temp + " F°";
         currentHumidityText.textContent = "Humidity: " + humidity + "%";
         currentWindText.textContent = "Wind: " + wind + " MPH";
@@ -233,30 +263,35 @@ historyContainer.addEventListener('click', function(event) {
         currentDateText.textContent = date
 
         // Day 1
+        dayOneIcon.src = dayOneIconBtn
         dayOneDateText.textContent = dayOneDate;
         dayOneTempText.textContent = "Temp: " + dayOneTemp + " F°";
         dayOneHumidityText.textContent = "Humidity: " + dayOneHumidity + " %";
         dayOneWindText.textContent = "Wind: " + dayOneWind + " MPH";
 
         // Day 2
+        dayTwoIcon.src = dayTwoIconBtn
         dayTwoDateText.textContent = dayTwoDate;
         dayTwoTempText.textContent = "Temp: " + dayTwoTemp + " F°";
         dayTwoHumidityText.textContent = "Humidity: " + dayTwoHumidity + " %";
         dayTwoWindText.textContent = "Wind: " + dayTwoWind + " MPH";
 
         // Day 3
+        dayThreeIcon.src = dayThreeIconBtn
         dayThreeDateText.textContent = dayThreeDate;
         dayThreeTempText.textContent = "Temp: " + dayThreeTemp + " F°";
         dayThreeHumidityText.textContent = "Humidity: " + dayThreeHumidity + " %";
         dayThreeWindText.textContent = "Wind: " + dayThreeWind + " MPH";
 
         // Day 4
+        dayFourIcon.src = dayFourIconBtn
         dayFourDateText.textContent = dayFourDate;
         dayFourTempText.textContent = "Temp: " + dayFourTemp + " F°";
         dayFourHumidityText.textContent = "Humidity: " + dayFourHumidity + " %";
         dayFourWindText.textContent = "Wind: " + dayFourWind + " MPH";
 
         // Day 5
+        dayFiveIcon.src = dayFiveIconBtn
         dayFiveDateText.textContent = dayFiveDate;
         dayFiveTempText.textContent = "Temp: " + dayFiveTemp + " F°";
         dayFiveHumidityText.textContent = "Humidity: " + dayFiveHumidity + " %";
