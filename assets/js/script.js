@@ -50,7 +50,7 @@ const getWeather = function() {
     let cityName = document.getElementById('cityInput').value.trim();
     cardContent.textContent = ""
     // Get latitude and longitude for the city using OpenWeatherMap API
-    const url = 'http://api.openweathermap.org/geo/1.0/direct?q='+ cityName +'&limit=1&appid=f17b80a27f709b301d621c8fa4baf88e'
+    const url = 'https://api.openweathermap.org/geo/1.0/direct?q='+ cityName +'&limit=1&appid=f17b80a27f709b301d621c8fa4baf88e'
     fetch(url)
     .then(response => response.json())
     .then(data => {
