@@ -7,13 +7,40 @@ const dayTwoForecast = document.getElementById("dayTwoWeather")
 const dayThreeForecast = document.getElementById("dayThreeWeather")
 const dayFourForecast = document.getElementById("dayFourWeather")
 const dayFiveForecast = document.getElementById("dayFiveWeather")
+const historyContainer = document.getElementById('historyContainer');
+const cardContent = document.querySelector(".card-content")
+const currentForecastCard = document.querySelector(".card-header-title")
+const cityText = document.querySelector(".city")
 
+const currentDateText = document.getElementById("currentDate");
 
+const dayOneDateText = document.getElementById("dayOneDate");
+const dayOneTempText = document.getElementById("dayOneTemp");
+const dayOneHumidityText = document.getElementById("dayOneHumidity");
+const dayOneWindText = document.getElementById("dayOneWind");
 
-document.getElementById('searchBtn').addEventListener('click', function() {
+const dayTwoDateText = document.getElementById("dayTwoDate");
+const dayTwoTempText = document.getElementById("dayTwoTemp");
+const dayTwoHumidityText = document.getElementById("dayTwoHumidity");
+const dayTwoWindText = document.getElementById("dayTwoWind");
+
+const dayThreeDateText = document.getElementById("dayThreeDate");
+const dayThreeTempText = document.getElementById("dayThreeTemp");
+const dayThreeHumidityText = document.getElementById("dayThreeHumidity");
+const dayThreeWindText = document.getElementById("dayThreeWind");
+
+const dayFourDateText = document.getElementById("dayFourDate");
+const dayFourTempText = document.getElementById("dayFourTemp");
+const dayFourHumidityText = document.getElementById("dayFourHumidity");
+const dayFourWindText = document.getElementById("dayFourWind");
+
+const dayFiveDateText = document.getElementById("dayFiveDate");
+const dayFiveTempText = document.getElementById("dayFiveTemp");
+const dayFiveHumidityText = document.getElementById("dayFiveHumidity");
+const dayFiveWindText = document.getElementById("dayFiveWind");
+
+const getWeather = function() {
     let cityName = document.getElementById('cityInput').value.trim();
-    cityNameCleaned = cityName.replace(/ /g, '%20');
-    console.log(cityName);
     // Get latitude and longitude for the city using OpenWeatherMap API
     const url = 'http://api.openweathermap.org/geo/1.0/direct?q='+ cityName +'&limit=1&appid=f17b80a27f709b301d621c8fa4baf88e'
     fetch(url)
@@ -52,16 +79,17 @@ document.getElementById('searchBtn').addEventListener('click', function() {
         const currentDateFormated = (formatDate(currentDate))
         console.log(currentDateFormated)
         
-        
+        const currentCityItem = document.createElement("h1")
         const currentTempItem = document.createElement("p")
         const currentDateItem = document.createElement("p")
         const currentHumidityItem = document.createElement("p")
         const currentWindItem = document.createElement("p")
+        currentCityItem.textContent = cityName;
         currentDateItem.textContent = "Date: " + currentDateFormated;
         currentTempItem.textContent = "Temp: " + currentTemp + " F°";
         currentHumidityItem.textContent = "Humidity: " + currentHumidity + " %";
         currentWindItem.textContent = "Wind: " + currentWind + " MPH"
-        currentForecast.append(currentDateItem, currentTempItem, currentHumidityItem, currentWindItem)
+        currentForecast.append(currentCityItem, currentDateItem, currentTempItem, currentHumidityItem, currentWindItem)
 
         
         const dayOneTemp = data.list[7].main.temp;
@@ -140,15 +168,127 @@ document.getElementById('searchBtn').addEventListener('click', function() {
         dayFiveHumidityItem.textContent = "Humidity: " + dayFiveHumidity + " %";
         dayFiveWindItem.textContent = dayFiveWind + " MPH";
         dayFiveForecast.append(dayFiveDateItem, dayFiveTempItem, dayFiveHumidityItem, dayFiveWindItem);
+        //History button
+        const historyButton = document.createElement('button');
+        historyButton.textContent = cityName;
+        historyButton.classList.add("historyButton", "button", "is-black"); 
+
+        // Save weather details to the button
+        historyButton.dataset.temp = currentTemp;
+        historyButton.dataset.humidity = currentHumidity;
+        historyButton.dataset.wind = currentWind;
+        historyButton.dataset.date = currentDateFormated;
+        historyButton.dataset.city = cityName
+        const days = [
+            { temp: dayOneTemp, humidity: dayOneHumidity, wind: dayOneWind, date: dayOneDateFormated },
+            { temp: dayTwoTemp, humidity: dayTwoHumidity, wind: dayTwoWind, date: dayTwoDateFormated },
+            { temp: dayThreeTemp, humidity: dayThreeHumidity, wind: dayThreeWind, date: dayThreeDateFormated },
+            { temp: dayFourTemp, humidity: dayFourHumidity, wind: dayFourWind, date: dayFourDateFormated },
+            { temp: dayFiveTemp, humidity: dayFiveHumidity, wind: dayFiveWind, date: dayFiveDateFormated }
+        ];
+        
+        for (let i = 0; i < days.length; i++) {
+            historyButton.dataset[`day${i + 1}Temp`] = days[i].temp;
+            historyButton.dataset[`day${i + 1}Humidity`] = days[i].humidity;
+            historyButton.dataset[`day${i + 1}Wind`] = days[i].wind;
+            historyButton.dataset[`day${i + 1}Date`] = days[i].date;
+        }
+
+        
+
+        // Append button to the history container
+        historyContainer.appendChild(historyButton);
+
 
         
         // Save the city to localStorage
         let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
-        searchHistory.push(cityName);
         localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
     });
+};
+
+document.getElementById('searchBtn').addEventListener('click', getWeather);
+
+historyContainer.addEventListener('click', function(event) {
+    if (event.target.classList.contains('historyButton')) {
+        let button = event.target;
+
+        let cityName = button.dataset.city;
+        let temp = button.dataset.temp;
+        let humidity = button.dataset.humidity;
+        let wind = button.dataset.wind;
+        let date = button.dataset.date;
+
+        let dayOneTemp = button.dataset.day1temp;
+        let dayOneHumidity = button.dataset.day1humidity;
+        let dayOneWind = button.dataset.day1wind;
+        let dayOneDate = button.dataset.day1date;
+        
+        let dayTwoTemp = button.dataset.day2temp;
+        let dayTwoHumidity = button.dataset.day2humidity;
+        let dayTwoWind = button.dataset.day2wind;
+        let dayTwoDate = button.dataset.day2date;
+        
+        let dayThreeTemp = button.dataset.day3temp;
+        let dayThreeHumidity = button.dataset.day3humidity;
+        let dayThreeWind = button.dataset.day3wind;
+        let dayThreeDate = button.dataset.day3date;
+        
+        let dayFourTemp = button.dataset.day4temp;
+        let dayFourHumidity = button.dataset.day4humidity;
+        let dayFourWind = button.dataset.day4wind;
+        let dayFourDate = button.dataset.day4date;
+        
+        let dayFiveTemp = button.dataset.day5temp;
+        let dayFiveHumidity = button.dataset.day5humidity;
+        let dayFiveWind = button.dataset.day5wind;
+        let dayFiveDate = button.dataset.day5date;
+        
+        
+        
+
+        // Update the DOM with the saved data from the clicked button
+        // Example:
+        currentTempText.textContent = "Temp: " + temp + " F°";
+        currentHumidityText.textContent = "Humidity: " + humidity + "%";
+        currentWindText.textContent = "Wind: " + wind + " MPH";
+        cityText.textContent = cityName
+        currentDateText.textContent = date
+
+        // Day 1
+        dayOneDateText.textContent = dayOneDate;
+        dayOneTempText.textContent = "Temp: " + dayOneTemp + " F°";
+        dayOneHumidityText.textContent = "Humidity: " + dayOneHumidity + " %";
+        dayOneWindText.textContent = "Wind: " + dayOneWind + " MPH";
+
+        // Day 2
+        dayTwoDateText.textContent = dayTwoDate;
+        dayTwoTempText.textContent = "Temp: " + dayTwoTemp + " F°";
+        dayTwoHumidityText.textContent = "Humidity: " + dayTwoHumidity + " %";
+        dayTwoWindText.textContent = "Wind: " + dayTwoWind + " MPH";
+
+        // Day 3
+        dayThreeDateText.textContent = dayThreeDate;
+        dayThreeTempText.textContent = "Temp: " + dayThreeTemp + " F°";
+        dayThreeHumidityText.textContent = "Humidity: " + dayThreeHumidity + " %";
+        dayThreeWindText.textContent = "Wind: " + dayThreeWind + " MPH";
+
+        // Day 4
+        dayFourDateText.textContent = dayFourDate;
+        dayFourTempText.textContent = "Temp: " + dayFourTemp + " F°";
+        dayFourHumidityText.textContent = "Humidity: " + dayFourHumidity + " %";
+        dayFourWindText.textContent = "Wind: " + dayFourWind + " MPH";
+
+        // Day 5
+        dayFiveDateText.textContent = dayFiveDate;
+        dayFiveTempText.textContent = "Temp: " + dayFiveTemp + " F°";
+        dayFiveHumidityText.textContent = "Humidity: " + dayFiveHumidity + " %";
+        dayFiveWindText.textContent = "Wind: " + dayFiveWind + " MPH";
+
+
+    }
 });
 
 // Load previous searches from localStorage
 let searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
-document.getElementById('searchHistory').innerHTML = searchHistory.map(city => `<li>${city}</li>`).join('');
+document.getElementById('historyContainer').innerHTML = searchHistory.map(city => `<li>${city}</li>`).join('');

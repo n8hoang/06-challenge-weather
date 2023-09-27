@@ -19,6 +19,8 @@
         <div class="card column" id="currentWeather">
             <header class="card-header-title is-centered">Current Forecast</header>
             <div class="card-content">
+                <h1 class="city"></h1>
+                <div class="content" id="currentDate"></div>
                 <div class="content" id="currentTemp"></div>
                 <div class="content" id="currentHumidity"></div>
                 <div class="content" id="currentWind"></div>
@@ -31,6 +33,7 @@
             <div class="card" id="dayOneWeather">
                 <header class="card-header">Day 1 Forecast</header>
                 <div class="card-content">
+                    <div class="content" id="dayOneDate"></div>
                     <div class="content" id="dayOneTemp"></div>
                     <div class="content" id="dayOneHumidity"></div>
                     <div class="content" id="dayOneWind"></div>
@@ -40,6 +43,7 @@
             <div class="card" id="dayTwoWeather">
                 <header class="card-header">Day 2 Forecast</header>
                 <div class="card-content">
+                    <div class="content" id="dayTwoDate"></div>
                     <div class="content" id="dayTwoTemp"></div>
                     <div class="content" id="dayTwoHumidity"></div>
                     <div class="content" id="dayTwoWind"></div>
@@ -49,6 +53,7 @@
             <div class="card" id="dayThreeWeather">
                 <header class="card-header">Day 3 Forecast</header>
                 <div class="card-content">
+                    <div class="content" id="dayThreeDate"></div>
                     <div class="content" id="dayThreeTemp"></div>
                     <div class="content" id="dayThreeHumidity"></div>
                     <div class="content" id="dayThreeWind"></div>
@@ -58,6 +63,7 @@
             <div class="card" id="dayFourWeather">
                 <header class="card-header">Day 4 Forecast</header>
                 <div class="card-content">
+                    <div class="content" id="dayFourDate"></div>
                     <div class="content" id="dayFourTemp"></div>
                     <div class="content" id="dayFourHumidity"></div>
                     <div class="content" id="dayFourWind"></div>
@@ -67,6 +73,7 @@
             <div class="card" id="dayFiveWeather">
                 <header class="card-header">Day 5 Forecast</header>
                 <div class="card-content">
+                    <div class="content" id="dayFiveDate"></div>
                     <div class="content" id="dayFiveTemp"></div>
                     <div class="content" id="dayFiveHumidity"></div>
                     <div class="content" id="dayFiveWind"></div>
@@ -75,7 +82,7 @@
         </div>
     </div>
     
-        <ul id="searchHistory"></ul>
+        <ul id="historyContainer"></ul>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="./assets/js/script.js"></script>
