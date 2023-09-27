@@ -41,6 +41,7 @@ const dayFiveWindText = document.getElementById("dayFiveWind");
 
 const getWeather = function() {
     let cityName = document.getElementById('cityInput').value.trim();
+    cardContent.textContent = ""
     // Get latitude and longitude for the city using OpenWeatherMap API
     const url = 'http://api.openweathermap.org/geo/1.0/direct?q='+ cityName +'&limit=1&appid=f17b80a27f709b301d621c8fa4baf88e'
     fetch(url)
@@ -79,17 +80,12 @@ const getWeather = function() {
         const currentDateFormated = (formatDate(currentDate))
         console.log(currentDateFormated)
         
-        const currentCityItem = document.createElement("h1")
-        const currentTempItem = document.createElement("p")
-        const currentDateItem = document.createElement("p")
-        const currentHumidityItem = document.createElement("p")
-        const currentWindItem = document.createElement("p")
-        currentCityItem.textContent = cityName;
-        currentDateItem.textContent = "Date: " + currentDateFormated;
-        currentTempItem.textContent = "Temp: " + currentTemp + " F°";
-        currentHumidityItem.textContent = "Humidity: " + currentHumidity + " %";
-        currentWindItem.textContent = "Wind: " + currentWind + " MPH"
-        currentForecast.append(currentCityItem, currentDateItem, currentTempItem, currentHumidityItem, currentWindItem)
+        cityText.textContent = cityName;
+        currentDateText.textContent = "Date: " + currentDateFormated;
+        currentTempText.textContent = "Temp: " + currentTemp + " F°";
+        currentHumidityText.textContent = "Humidity: " + currentHumidity + " %";
+        currentWindText.textContent = "Wind: " + currentWind + " MPH"
+        currentForecast.append(cityText, currentDateText, currentTempText, currentHumidityText, currentWindText)
 
         
         const dayOneTemp = data.list[7].main.temp;
@@ -97,15 +93,11 @@ const getWeather = function() {
         const dayOneWind = data.list[7].wind.speed;
         const dayOneDate = data.list[7].dt_txt;
         const dayOneDateFormated = (formatDate(dayOneDate))
-        const dayOneTempItem = document.createElement("p");
-        const dayOneDateItem = document.createElement("p");
-        const dayOneHumidityItem = document.createElement("p");
-        const dayOneWindItem = document.createElement("p");
-        dayOneDateItem.textContent = "Date: " + dayOneDateFormated;
-        dayOneTempItem.textContent = "Temp: " + dayOneTemp + " F°";
-        dayOneHumidityItem.textContent = "Humidity: " + dayOneHumidity + " %";
-        dayOneWindItem.textContent = dayOneWind + " MPH";
-        dayOneForecast.append(dayOneDateItem, dayOneTempItem, dayOneHumidityItem, dayOneWindItem);
+        dayOneDateText.textContent = "Date: " + dayOneDateFormated;
+        dayOneTempText.textContent = "Temp: " + dayOneTemp + " F°";
+        dayOneHumidityText.textContent = "Humidity: " + dayOneHumidity + " %";
+        dayOneWindText.textContent = dayOneWind + " MPH";
+        dayOneForecast.append(dayOneDateText, dayOneTempText, dayOneHumidityText, dayOneWindText);
 
         
         const dayTwoTemp = data.list[15].main.temp;
@@ -113,15 +105,11 @@ const getWeather = function() {
         const dayTwoWind = data.list[15].wind.speed;
         const dayTwoDate = data.list[15].dt_txt;
         const dayTwoDateFormated = (formatDate(dayTwoDate))
-        const dayTwoTempItem = document.createElement("p");
-        const dayTwoDateItem = document.createElement("p");
-        const dayTwoHumidityItem = document.createElement("p");
-        const dayTwoWindItem = document.createElement("p");
-        dayTwoDateItem.textContent = "Date: " + dayTwoDateFormated;
-        dayTwoTempItem.textContent = "Temp: " + dayTwoTemp + " F°";
-        dayTwoHumidityItem.textContent = "Humidity: " + dayTwoHumidity + " %";
-        dayTwoWindItem.textContent = dayTwoWind + " MPH";
-        dayTwoForecast.append(dayTwoDateItem, dayTwoTempItem, dayTwoHumidityItem, dayTwoWindItem);
+        dayTwoDateText.textContent = "Date: " + dayTwoDateFormated;
+        dayTwoTempText.textContent = "Temp: " + dayTwoTemp + " F°";
+        dayTwoHumidityText.textContent = "Humidity: " + dayTwoHumidity + " %";
+        dayTwoWindText.textContent = dayTwoWind + " MPH";
+        dayTwoForecast.append(dayTwoDateText, dayTwoTempText, dayTwoHumidityText, dayTwoWindText);
 
 
         const dayThreeTemp = data.list[23].main.temp;
@@ -129,45 +117,33 @@ const getWeather = function() {
         const dayThreeWind = data.list[23].wind.speed;
         const dayThreeDate = data.list[23].dt_txt;
         const dayThreeDateFormated = (formatDate(dayThreeDate))
-        const dayThreeTempItem = document.createElement("p");
-        const dayThreeDateItem = document.createElement("p");
-        const dayThreeHumidityItem = document.createElement("p");
-        const dayThreeWindItem = document.createElement("p");
-        dayThreeDateItem.textContent = "Date: " + dayThreeDateFormated;
-        dayThreeTempItem.textContent = "Temp: " + dayThreeTemp + " F°";
-        dayThreeHumidityItem.textContent = "Humidity: " + dayThreeHumidity + " %";
-        dayThreeWindItem.textContent = dayThreeWind + " MPH";
-        dayThreeForecast.append(dayThreeDateItem, dayThreeTempItem, dayThreeHumidityItem, dayThreeWindItem);
+        dayThreeDateText.textContent = "Date: " + dayThreeDateFormated;
+        dayThreeTempText.textContent = "Temp: " + dayThreeTemp + " F°";
+        dayThreeHumidityText.textContent = "Humidity: " + dayThreeHumidity + " %";
+        dayThreeWindText.textContent = dayThreeWind + " MPH";
+        dayThreeForecast.append(dayThreeDateText, dayThreeTempText, dayThreeHumidityText, dayThreeWindText);
         
         const dayFourTemp = data.list[31].main.temp;
         const dayFourHumidity = data.list[31].main.humidity;
         const dayFourWind = data.list[31].wind.speed;
         const dayFourDate = data.list[31].dt_txt;
         const dayFourDateFormated = (formatDate(dayFourDate))
-        const dayFourTempItem = document.createElement("p");
-        const dayFourDateItem = document.createElement("p");
-        const dayFourHumidityItem = document.createElement("p");
-        const dayFourWindItem = document.createElement("p");
-        dayFourDateItem.textContent = "Date: " + dayFourDateFormated;
-        dayFourTempItem.textContent = "Temp: " + dayFourTemp + " F°";
-        dayFourHumidityItem.textContent = "Humidity: " + dayFourHumidity + " %";
-        dayFourWindItem.textContent = dayFourWind + " MPH";
-        dayFourForecast.append(dayFourDateItem, dayFourTempItem, dayFourHumidityItem, dayFourWindItem);
+        dayFourDateText.textContent = "Date: " + dayFourDateFormated;
+        dayFourTempText.textContent = "Temp: " + dayFourTemp + " F°";
+        dayFourHumidityText.textContent = "Humidity: " + dayFourHumidity + " %";
+        dayFourWindText.textContent = dayFourWind + " MPH";
+        dayFourForecast.append(dayFourDateText, dayFourTempText, dayFourHumidityText, dayFourWindText);
         
         const dayFiveTemp = data.list[39].main.temp;
         const dayFiveHumidity = data.list[39].main.humidity;
         const dayFiveWind = data.list[39].wind.speed;
         const dayFiveDate = data.list[39].dt_txt;
         const dayFiveDateFormated = (formatDate(dayFiveDate))
-        const dayFiveTempItem = document.createElement("p");
-        const dayFiveDateItem = document.createElement("p");
-        const dayFiveHumidityItem = document.createElement("p");
-        const dayFiveWindItem = document.createElement("p");
-        dayFiveDateItem.textContent = "Date: " + dayFiveDateFormated;
-        dayFiveTempItem.textContent = "Temp: " + dayFiveTemp + " F°";
-        dayFiveHumidityItem.textContent = "Humidity: " + dayFiveHumidity + " %";
-        dayFiveWindItem.textContent = dayFiveWind + " MPH";
-        dayFiveForecast.append(dayFiveDateItem, dayFiveTempItem, dayFiveHumidityItem, dayFiveWindItem);
+        dayFiveDateText.textContent = "Date: " + dayFiveDateFormated;
+        dayFiveTempText.textContent = "Temp: " + dayFiveTemp + " F°";
+        dayFiveHumidityText.textContent = "Humidity: " + dayFiveHumidity + " %";
+        dayFiveWindText.textContent = dayFiveWind + " MPH";
+        dayFiveForecast.append(dayFiveDateText, dayFiveTempText, dayFiveHumidityText, dayFiveWindText);
         //History button
         const historyButton = document.createElement('button');
         historyButton.textContent = cityName;
@@ -211,6 +187,7 @@ document.getElementById('searchBtn').addEventListener('click', getWeather);
 
 historyContainer.addEventListener('click', function(event) {
     if (event.target.classList.contains('historyButton')) {
+        cardContent.textContent = ""
         let button = event.target;
 
         let cityName = button.dataset.city;
@@ -219,30 +196,30 @@ historyContainer.addEventListener('click', function(event) {
         let wind = button.dataset.wind;
         let date = button.dataset.date;
 
-        let dayOneTemp = button.dataset.day1temp;
-        let dayOneHumidity = button.dataset.day1humidity;
-        let dayOneWind = button.dataset.day1wind;
-        let dayOneDate = button.dataset.day1date;
+        let dayOneTemp = button.dataset.day1Temp;
+        let dayOneHumidity = button.dataset.day1Humidity;
+        let dayOneWind = button.dataset.day1Wind;
+        let dayOneDate = button.dataset.day1Date;
         
-        let dayTwoTemp = button.dataset.day2temp;
-        let dayTwoHumidity = button.dataset.day2humidity;
-        let dayTwoWind = button.dataset.day2wind;
-        let dayTwoDate = button.dataset.day2date;
+        let dayTwoTemp = button.dataset.day2Temp;
+        let dayTwoHumidity = button.dataset.day2Humidity;
+        let dayTwoWind = button.dataset.day2Wind;
+        let dayTwoDate = button.dataset.day2Date;
         
-        let dayThreeTemp = button.dataset.day3temp;
-        let dayThreeHumidity = button.dataset.day3humidity;
-        let dayThreeWind = button.dataset.day3wind;
-        let dayThreeDate = button.dataset.day3date;
+        let dayThreeTemp = button.dataset.day3Temp;
+        let dayThreeHumidity = button.dataset.day3Humidity;
+        let dayThreeWind = button.dataset.day3Wind;
+        let dayThreeDate = button.dataset.day3Date;
         
-        let dayFourTemp = button.dataset.day4temp;
-        let dayFourHumidity = button.dataset.day4humidity;
-        let dayFourWind = button.dataset.day4wind;
-        let dayFourDate = button.dataset.day4date;
+        let dayFourTemp = button.dataset.day4Temp;
+        let dayFourHumidity = button.dataset.day4Humidity;
+        let dayFourWind = button.dataset.day4Wind;
+        let dayFourDate = button.dataset.day4Date;
         
-        let dayFiveTemp = button.dataset.day5temp;
-        let dayFiveHumidity = button.dataset.day5humidity;
-        let dayFiveWind = button.dataset.day5wind;
-        let dayFiveDate = button.dataset.day5date;
+        let dayFiveTemp = button.dataset.day5Temp;
+        let dayFiveHumidity = button.dataset.day5Humidity;
+        let dayFiveWind = button.dataset.day5Wind;
+        let dayFiveDate = button.dataset.day5Date;
         
         
         
